@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <title>Pagination</title>
+  </head>
+  <body>
+
+    <h1>Pagination!</h1>
+
+      <nav aria-label="...">
+        <ul class="pagination pageOne">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+          <li class="page-item active" id="one" aria-current="page">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item" id="two" aria-current="page">
+            <a class="page-link" href="#">2</a>
+          </li>
+          <li class="page-item" id="three" aria-current="page">
+            <a class="page-link" href="#">3</a>
+          </li>
+          <li class="page-item" id="four" aria-current="page">
+            <a class="page-link" href="#">4</a>
+          </li>
+          <li class="page-item" id="five" aria-current="page">
+            <a class="page-link" href="#">5</a>
+          </li>
+          <li class="page-item" id="nextPage">
+            <a class="page-link"  href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <nav aria-label="...">
+        <ul class="pagination pageTwo d-none">
+            <li class="page-item" id="previousPage">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li class="page-item active" id="six" aria-current="page">
+            <a class="page-link" href="#">6</a>
+            </li>
+            <li class="page-item" id="seven" aria-current="page">
+            <a class="page-link" href="#">7</a>
+            </li>
+            <li class="page-item" id="eight" aria-current="page">
+            <a class="page-link" href="#">8</a>
+            </li>
+            <li class="page-item" id="nine" aria-current="page">
+            <a class="page-link" href="#">9</a>
+            </li>
+            <li class="page-item" id="ten" aria-current="page">
+            <a class="page-link" href="#">10</a>
+            </li>
+            <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+            </li>
+        </ul>
+      </nav>
+
+      <script>
+        $(document).ready(function(){
+            $('#nextPage').click(function(){
+                $('.pageOne').addClass('d-none');
+                $('.pageTwo').removeClass('d-none');
+                $('#seven').removeClass('active');
+                $('#eight').removeClass('active');
+                $('#nine').removeClass('active');
+                $('#ten').removeClass('active');
+                $('#six').addClass('active');
+            })
+            $('#previousPage').click(function(){
+                $('.pageOne').removeClass('d-none');
+                $('.pageTwo').addClass('d-none');
+                $('#two').removeClass('active');
+                $('#three').removeClass('active');
+                $('#four').removeClass('active');
+                $('#five').removeClass('active');
+                $('#one').addClass('active');
+            })
+            $('#one').click(function(){
+                $('#two').removeClass('active');
+                $('#three').removeClass('active');
+                $('#four').removeClass('active');
+                $('#five').removeClass('active');
+                $('#one').addClass('active');
+            })
+            $('#two').click(function(){
+                $('#one').removeClass('active');
+                $('#three').removeClass('active');
+                $('#four').removeClass('active');
+                $('#five').removeClass('active');
+                $('#two').addClass('active');
+            })
+            $('#three').click(function(){
+                $('#one').removeClass('active');
+                $('#two').removeClass('active');
+                $('#four').removeClass('active');
+                $('#five').removeClass('active');
+                $('#three').addClass('active');
+            })
+            $('#four').click(function(){
+                $('#one').removeClass('active');
+                $('#two').removeClass('active');
+                $('#three').removeClass('active');
+                $('#five').removeClass('active');
+                $('#four').addClass('active');
+            })
+            $('#five').click(function(){
+                $('#one').removeClass('active');
+                $('#two').removeClass('active');
+                $('#three').removeClass('active');
+                $('#four').removeClass('active');
+                $('#five').addClass('active');
+            })
+            $('#six').click(function(){
+                $('#seven').removeClass('active');
+                $('#eight').removeClass('active');
+                $('#nine').removeClass('active');
+                $('#ten').removeClass('active');
+                $('#six').addClass('active');
+            })
+            $('#seven').click(function(){
+                $('#six').removeClass('active');
+                $('#eight').removeClass('active');
+                $('#nine').removeClass('active');
+                $('#ten').removeClass('active');
+                $('#seven').addClass('active');
+            })
+            $('#eight').click(function(){
+                $('#six').removeClass('active');
+                $('#seven').removeClass('active');
+                $('#nine').removeClass('active');
+                $('#ten').removeClass('active');
+                $('#eight').addClass('active');
+            })
+            $('#nine').click(function(){
+                $('#six').removeClass('active');
+                $('#seven').removeClass('active');
+                $('#eight').removeClass('active');
+                $('#ten').removeClass('active');
+                $('#nine').addClass('active');
+            })
+            $('#ten').click(function(){
+                $('#six').removeClass('active');
+                $('#seven').removeClass('active');
+                $('#eight').removeClass('active');
+                $('#nine').removeClass('active');
+                $('#ten').addClass('active');
+            })
+        })
+      </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+  </body>
+</html>

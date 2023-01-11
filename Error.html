@@ -1,0 +1,125 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+<style>
+    .current {
+     color: green;
+    }
+
+    #pagin li {
+     display: inline-block;
+    }
+</style>
+
+                                    <!-- ERRORRRRRRRRRRRRRRRRRRRR -->
+
+<div class="line-content">1 I have some content</div>
+<div class="line-content">2 I have some content</div>
+<div class="line-content">3 I have some content</div>
+<div class="line-content">4 I have some content</div>
+<div class="line-content">5 I have some content</div>
+<div class="line-content">6 I have some content</div>
+<div class="line-content">7 I have some content</div>
+<div class="line-content">8 I have some content</div>
+<div class="line-content">9 I have some content</div>
+<div class="line-content">10 I have some content</div>
+<div class="line-content">11 I have some content</div>
+<div class="line-content">12 I have some content</div>
+<div class="line-content">1 I have some content</div>
+<div class="line-content">2 I have some content</div>
+<div class="line-content">3 I have some content</div>
+<div class="line-content">4 I have some content</div>
+<div class="line-content">5 I have some content</div>
+<div class="line-content">6 I have some content</div>
+<div class="line-content">7 I have some content</div>
+<div class="line-content">8 I have some content</div>
+<div class="line-content">9 I have some content</div>
+<div class="line-content">10 I have some content</div>
+<div class="line-content">11 I have some content</div>
+<div class="line-content">12 I have some content</div>
+<div class="line-content">1 I have some content</div>
+<div class="line-content">2 I have some content</div>
+<div class="line-content">3 I have some content</div>
+<div class="line-content">4 I have some content</div>
+<div class="line-content">5 I have some content</div>
+<div class="line-content">6 I have some content</div>
+<div class="line-content">7 I have some content</div>
+<div class="line-content">8 I have some content</div>
+<div class="line-content">9 I have some content</div>
+<div class="line-content">10 I have some content</div>
+<div class="line-content">11 I have some content</div>
+<div class="line-content">12 I have some content</div>
+
+<ul id="pagin">
+         
+</ul>
+
+<script>
+        //Pagination
+        pageSize = 5;
+
+        // perPage = 5;
+
+    var pageCount =  Math.ceil($(".line-content").length / pageSize);
+    console.log(pageCount);
+
+    $("#pagin").append('<li class="page-item disabled" id="prev"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
+    for(var i = 1 ; i<=pageCount;i++){
+        $("#pagin").append('<li class="page-item" aria-current="page"><a class="page-link" href="#">'+i+'</a></li> ');
+    }
+    $("#pagin").append('<li class="page-item" id="next"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> ');
+
+        $("#pagin li").first().find("a").addClass("current")
+    showPage = function(page) {
+        $(".line-content").hide();
+        $(".line-content").each(function(n) {
+            if (n >= pageSize * (page - 1) && n < pageSize * page)
+                $(this).show();
+        });        
+    }
+
+    showPage(1);
+
+    $("#pagin li a").click(function() {
+        $("#pagin li a").removeClass("current");
+        $(this).addClass("current");
+        showPage(parseInt($(this).text())) 
+    });
+
+    var $lis = $(".page-item").hide();
+    $('#prev').show();
+    $lis.slice(1, 6).show();
+    $('#next').show();
+    var size_li = $lis.length;
+        var x = 5, start = 1;
+
+        $('#next').click(function () {
+            if (start + x < size_li && start +x < pageCount+1) {
+                $('#prev').removeClass('disabled');
+                $lis.slice(start, start + x).hide();
+                start += x;
+                $lis.slice(start, start + x).show();
+                if(start +x >= pageCount){
+                    $('#next').addClass('disabled');
+                }
+                console.log(start +x);
+                console.log(pageCount);
+            }
+        });
+
+        $('#prev').click(function () {
+            if (start - x >= 0) {
+                $lis.slice(start, start + x).hide();
+                start -= x;
+                $lis.slice(start, start + x).show();
+                if(start - x <0){
+                    $('#prev').addClass('disabled');
+                }else{
+                    $('#next').removeClass('disabled');
+                }
+            }
+        });
+
+
+
+</script>

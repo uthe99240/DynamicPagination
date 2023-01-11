@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DynamicPagination</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <style>
+        .current {
+      color: green;
+    }
+    
+    #pagin li {
+      display: inline-block;
+    }
+    </style>
+
+</head>
+<body>
+    <nav aria-label="...">
+        <ul id="pagin" class="pagination">
+            
+        </ul>
+    </nav>
+    
+    <script>
+        
+        var pageSize =40;
+    
+        $("#pagin").append('<li class="page-item disabled" id="prev"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>');
+    
+        for(var i = 1 ; i<=pageSize;i++){
+            $("#pagin").append('<li class="page-item" aria-current="page"><a class="page-link" href="#">'+i+'</a></li> ');
+        }
+    
+        $("#pagin").append('<li class="page-item" id="next"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li> ');
+    
+    
+        var $lis = $(".page-item").hide();
+            $('#prev').show();
+            $lis.slice(1, 6).show();
+            // $lis.slice(41).show();
+            $('#next').show();
+            var size_li = $lis.length;
+            var x = 5, start = 1;
+    
+            $('#next').click(function () {
+                if (start + x < size_li && start +x < pageSize+1) {
+                    $('#prev').removeClass('disabled');
+                    $lis.slice(start, start + x).hide();
+                    start += x;
+                    $lis.slice(start, start + x).show();
+                    if(start +x >= pageSize){
+                        $('#next').addClass('disabled');
+                    }
+                    // console.log(start +x);
+                    // console.log(pageSize);
+                }
+            });
+    
+            $('#prev').click(function () {
+                if (start - x >= 0) {
+                    $lis.slice(start, start + x).hide();
+                    start -= x;
+                    $lis.slice(start, start + x).show();
+                    if(start - x <0){
+                        $('#prev').addClass('disabled');
+                    }else{
+                        $('#next').removeClass('disabled');
+                    }
+                }
+            });
+    
+    </script>
+</body>
+</html>
+
+
